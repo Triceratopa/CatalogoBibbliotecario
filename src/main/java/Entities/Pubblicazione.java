@@ -53,7 +53,9 @@ public abstract class Pubblicazione {
         this.numberOfPages = numberOfPages;
     }
     @Override
-    public String toString(Libro lbr) {
+    public String toString() {
         return ISBN + "\t" + title + "\t" + publicationYear + "\t" + numberOfPages;
     }
+    public abstract String toString(Libro libro);
+    public abstract String toString(Riviste riviste);
 }
