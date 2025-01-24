@@ -21,6 +21,16 @@ public class Libro extends Pubblicazione {
 
     }
 
+    @Override
+    public String toString(Libro libro) {
+        return "";
+    }
+
+    @Override
+    public String toString(Riviste riviste) {
+        return "";
+    }
+
     public String getAuthor() {
         return author;
     }
@@ -34,11 +44,11 @@ public class Libro extends Pubblicazione {
         this.genre = genre;
     }
     @ManyToOne
-    @JoinColumn(name = "AutoreID", referencedColumnName = "autoreID")
+    @JoinColumn(name = "AutoreID")
     private Autore autore;
 
     @ManyToOne
-    @JoinColumn(name = "GenereID", referencedColumnName = "genereID")
+    @JoinColumn(name = "GenereID")
     private Genere genere;
 
 

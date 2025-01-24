@@ -1,24 +1,38 @@
 package Entities;
 
-import java.util.Date;
+import jakarta.persistence.*;
 
+import java.time.LocalDate;
+import java.util.Date;
+@Entity
+@Table(name="Prestito")
 public class Presito {
+
     private int prestitoId;
+    @ManyToOne
+    @JoinColumn(name = "utente_id")
     private Utente utente;
+    @ManyToOne
+    @JoinColumn(name = "isbn")
     private Pubblicazione pubblicazione;
-    private Date dataInizio;
-    private Date DataResPrevista;
-    private Date dataResEffettuta;
+    private LocalDate dataInizio;
+    private LocalDate dataResPrevista;
+    private LocalDate dataResEffettuta;
 
    public Presito(int prestitoId,Utente utente,Pubblicazione pubblicazione,Date dataInizio, Date DataResPrevista, Date dataResEffettuta) {
        this.prestitoId = prestitoId;
        this.utente = utente;
        this.pubblicazione = pubblicazione;
        this.dataInizio = dataInizio;
-       this.DataResPrevista = DataResPrevista;
+       this.dataResPrevista = dataResPrevista;
        this.dataResEffettuta = dataResEffettuta;
 
    }
+
+    public Presito() {
+
+    }
+
 
     public int getPrestitoId() {
         return prestitoId;
@@ -44,27 +58,29 @@ public class Presito {
         this.pubblicazione = pubblicazione;
     }
 
-    public Date getDataInizio() {
+    public LocalDate getDataInizio() {
         return dataInizio;
     }
 
-    public void setDataInizio(Date dataInizio) {
+    public void setDataInizio(LocalDate dataInizio) {
         this.dataInizio = dataInizio;
+        this.dataResPrevista=dataInizio.plusDays(30);
     }
 
-    public Date getDataResPrevista() {
-        return DataResPrevista;
+    public LocalDate getDataResPrevista() {
+        return dataResPrevista;
     }
 
-    public void setDataResPrevista(Date dataResPrevista) {
-        DataResPrevista = dataResPrevista;
+    public void setDataResPrevista(LocalDate dataResPrevista) {
+        dataResPrevista = dataResPrevista;
     }
 
-    public Date getDataResEffettuta() {
+    public LocalDate getDataResEffettuta() {
         return dataResEffettuta;
     }
 
-    public void setDataResEffettuta(Date dataResEffettuta) {
+    public void setDataResEffettuta(LocalDate dataResEffettuta) {
         this.dataResEffettuta = dataResEffettuta;
     }
+
 }

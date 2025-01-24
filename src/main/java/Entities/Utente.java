@@ -1,7 +1,10 @@
 package Entities;
 
-import java.util.Date;
+import jakarta.persistence.*;
 
+import java.util.Date;
+@Entity
+@Table(name="Utente")
 public class Utente {
     private String nome;
     private String cognome;
@@ -13,6 +16,10 @@ public class Utente {
         this.cognome = cognome;
         this.dataNascita = dataNascita;
         this.utenteId = utenteId;
+    }
+
+    public Utente() {
+
     }
 
     public String getNome() {
