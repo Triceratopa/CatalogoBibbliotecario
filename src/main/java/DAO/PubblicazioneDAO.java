@@ -1,15 +1,17 @@
 package DAO;
 
 import Entities.Pubblicazione;
+import jakarta.persistence.EntityManager;
 
 import java.util.List;
 
-public interface PubblicazioneDAO {
-    //creo le azioni che dovrà poter fare
-    Pubblicazione getISBN(String isbn);
-    List<Pubblicazione> getISBNs();
-    void create(Pubblicazione isbn);
-    void update(Pubblicazione isbn);
-    void delete(Pubblicazione isbn);
+public class PubblicazioneDAO {
+   private EntityManager em;
 
+   public PubblicazioneDAO(EntityManager em) {
+       this.em = em;
+   }
+   public void save(Pubblicazione pubblicazione){
+       em.persist(pubblicazione);
+   }
 }
